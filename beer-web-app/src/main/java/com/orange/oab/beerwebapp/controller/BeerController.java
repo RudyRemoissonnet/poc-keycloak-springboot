@@ -2,9 +2,11 @@ package com.orange.oab.beerwebapp.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,10 +30,8 @@ public class BeerController {
 
     @RequestMapping(value = "/beers")
     public String about(Model model) throws IOException {
-        List<Map<String, Object>> beers = objectMapper.readValue(
-                getClass().getResourceAsStream("/static/beers/beers.json"),
-                new TypeReference<ArrayList<HashMap<String, String>>>() {
-                });
+        ResponseEntity<String> response = new RestTemplate().getForEntity("http://localhost:8082/rest/beers", String.class);
+        List<Map<String, Object>> beers = objectMapper.readValue(response.getBody(), new TypeReference<ArrayList<HashMap<String, String>>>() {});
         model.addAttribute("beers", beers);
         return "beers";
     }
