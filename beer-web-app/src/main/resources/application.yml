@@ -5,3 +5,11 @@ server:
 spring:
   thymeleaf:
     cache: false
+
+#Keycloak Configuration
+keycloak:
+  auth-server-url: http://localhost:8080/auth
+  realm: oab
+  resource: beer-web
+  public-client: true
+  principal-attribute: name
