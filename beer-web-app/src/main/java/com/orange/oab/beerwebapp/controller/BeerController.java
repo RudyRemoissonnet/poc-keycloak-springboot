@@ -2,11 +2,11 @@ package com.orange.oab.beerwebapp.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.keycloak.adapters.springsecurity.client.KeycloakRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,9 +18,11 @@ import java.util.Map;
 public class BeerController {
 
     private final ObjectMapper objectMapper;
+    private final KeycloakRestTemplate keycloakRestTemplate;
 
-    public BeerController(ObjectMapper objectMapper) {
+    public BeerController(ObjectMapper objectMapper, KeycloakRestTemplate keycloakRestTemplate) {
         this.objectMapper = objectMapper;
+        this.keycloakRestTemplate = keycloakRestTemplate;
     }
 
     @RequestMapping(value = "/")
@@ -30,7 +32,7 @@ public class BeerController {
 
     @RequestMapping(value = "/beers")
     public String about(Model model) throws IOException {
-        ResponseEntity<String> response = new RestTemplate().getForEntity("http://localhost:8082/rest/beers", String.class);
+        ResponseEntity<String> response = keycloakRestTemplate.getForEntity("http://localhost:8082/rest/beers", String.class);
         List<Map<String, Object>> beers = objectMapper.readValue(response.getBody(), new TypeReference<ArrayList<HashMap<String, String>>>() {});
         model.addAttribute("beers", beers);
         return "beers";
