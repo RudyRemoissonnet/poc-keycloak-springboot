@@ -1,3 +1,17 @@
 server:
   port: 8082
 
+# authentification via accesstoken only
+security:
+  basic:
+    enabled: false
+
+#Keycloak Configuration
+keycloak:
+  auth-server-url: http://localhost:8080/auth
+  realm: oab
+  resource: beer-api
+  public-client: false
+  bearer-only: true
+  credentials:
+    secret: e2b21c01-2ffb-41d9-8374-7ef56acbacf4
