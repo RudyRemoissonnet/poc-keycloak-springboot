@@ -1,0 +1,7 @@
+server:
+  port: 8081
+
+#Disable Thymeleaf caching for development, should be enabled for production
+spring:
+  thymeleaf:
+    cache: false
