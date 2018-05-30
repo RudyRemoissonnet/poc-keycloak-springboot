@@ -13,5 +13,6 @@ keycloak:
   resource: beer-api
   public-client: false
   bearer-only: true
+  principal-attribute: name
   credentials:
     secret: e2b21c01-2ffb-41d9-8374-7ef56acbacf4
