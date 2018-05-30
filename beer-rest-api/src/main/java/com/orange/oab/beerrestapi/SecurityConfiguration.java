@@ -40,7 +40,7 @@ class SecurityConfiguration extends KeycloakWebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         super.configure(http);
-        http.authorizeRequests().antMatchers("/rest/beers").authenticated();
+        http.authorizeRequests().antMatchers("/rest/beers").hasRole("beer_lover");
     }
 
 }
