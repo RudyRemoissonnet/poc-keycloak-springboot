@@ -1,0 +1,15 @@
+server:
+  port: 8083
+
+#Disable Thymeleaf caching for development, should be enabled for production
+spring:
+  thymeleaf:
+    cache: false
+
+#Keycloak Configuration
+keycloak:
+  auth-server-url: http://localhost:8080/auth
+  realm: oab
+  resource: beer-app
+  public-client: true
+  principal-attribute: name

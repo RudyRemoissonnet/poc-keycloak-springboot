@@ -1,0 +1,16 @@
+[
+  {
+    "alcohol": 7,
+    "description": "This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature ",
+    "id": "ChimayRed",
+    "img": "/beers/img/ChimayRed.jpg",
+    "name": "Chimay Rouge"
+  },
+  {
+    "alcohol": 10.5,
+    "description": "Chimay Triple, with its typical golden colour, its slightly hazy appearance and its fine head is especially characterised by its aroma which results from an agreeable combination of fresh hops and yeast. The beers flavour, as sensed in the mouth, comes from the smell of hops: above all it is the fruity notes of muscat and raisins that give this beer a particularly attractive aroma. The aroma complements the touch of bitterness. There is no acidity, but an after-bitterness which melts in the mouth. This top fermented Trappist beer, refermented in the bottle, is not pasteurised.",
+    "id": "ChimayTriple",
+    "img": "/beers/img/ChimayTriple.jpg",
+    "name": "Chimay Tripel"
+  }
+]

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/layout">
+
+<head>
+    <title>Layout</title>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+
+    <div class="row">
+
+        <div class="col-sm-3" th:each="beer: ${beers}">
+            <h4 style="text-align: center" th:text="${beer.get('name')}"></h4>
+            <img th:src="${beer.get('img')}"/>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
