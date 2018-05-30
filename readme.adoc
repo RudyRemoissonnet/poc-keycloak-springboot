@@ -1,0 +1,57 @@
+= poc Keycloak Springboot
+
+Keycloak v3.4.3
+
+== step
+
+Start keycloak :
+
+ # -b parameter is used to make server listen on every interface
+ tar -zxvf keycloak-4.0.0.Final.tar.gz
+ cd keycloak-4.0.0.Final/bin/
+ ./standalone.sh -b 0.0.0.0
+
+Launch browser IN CONTAINER and go to http://localhost:8080
+
+ http://localhost:8080
+
+Create admin user
+
+Create realm oab
+
+Create client beer-web (Configure > Clients > Create) :
+
+ client ID : beer-web
+ Root URL : http://localhost:8081
+ Valid Redirect URIs :
+ http://localhost:8081/*
+
+Create user
+
+ Create role beer_lover (Configure > Roles > Add Role)
+ Create user (Mange > Users > add user).
+ Set password to that user (Manage > Users > Credentials).
+ Add role beer_lover ot that user.
+ The username and password of scripts should be change to match the created user.
+
+Create client beer-api (Configure > Clients > Create) :
+
+ client ID : beer-api
+ Access Type : bearer-only
+ The secret in beer-rest-api configuration file should be change to the secret generated (Configure > Clients > Beer-api > Credentials).
+
+Create client beer-api-client (Configure > Clients > Create) :
+
+ client ID : beer-api-client
+ Access Type : confidential
+ keep only Enabled and Diret Access Grants Enabled switch on
+ The client_secret of script getToken-confidentialUser should be change to the secret generated (Configure > Clients > Beer-api > Credentials).
+
+== usefull links
+
+* http://blog.ineat-conseil.fr/2017/12/securisez-vos-apis-spring-avec-keycloak-3-utilisation-des-connecteurs-spring-de-keycloak/
+* https://www.youtube.com/watch?v=0cziL__0-K8&index=55&list=PLTbQvx84FrARa9pUtZYK7t_UfyGMCPOBn
+* http://www.baeldung.com/spring-boot-keycloak
+* https://info.michael-simons.eu/2017/12/28/use-keycloak-with-your-spring-boot-2-application/
+* https://www.infoq.com/fr/articles/introduction-openid-connect
+* https://marketing-image-production.s3.amazonaws.com/uploads/66b9a9b516469d9ffede4e93143c077072466d007f91b097e58aa8bd3a036691030c61a72b07463342beea993c7a9ca68f634a6ca3a4b24cc7d19921afb8e5e6.jpg
